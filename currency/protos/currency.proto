@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/ujjwalmishra21/building-microservices-grpc/currency/protos";
+
+service Currency{
+    rpc GetRate(RateRequest) returns (RateResponse) {}; 
+    // rpc mustEmbedUnimplementedCurrencyServer(Empty) returns (Empty) {};
+}
+message Empty {
+
+}
+
+message RateRequest{
+    Currencies Base = 1;
+    Currencies Destination = 2;
+}
+
+message RateResponse{
+    float Rate = 1;
+}
+
+enum Currencies {
+    EUR=0;
+    USD=1;
+    JPY=2;
+    INR=3;
+    GBP=4;
+}   
